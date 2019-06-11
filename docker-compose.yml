@@ -1,0 +1,24 @@
+version: '3'
+services:
+  php-fpm:
+    build:
+      context: ./docker
+      dockerfile: php-fpm.docker
+    volumes:
+      - ./:/var/www/slim
+  php-nginx:
+    build:
+      context: ./docker
+      dockerfile: nginx.docker
+    volumes:
+      - ./:/var/www/slim
+    ports:
+      - "80:80"
+  php-cli:
+    build:
+      context: ./docker
+      dockerfile: php-cli.docker
+    volumes:
+      - ./:/var/www/slim
+    working_dir: /var/www/slim
+    tty: true

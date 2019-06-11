@@ -1,0 +1,7 @@
+FROM php:7.2-cli
+
+RUN apt-get update -y && apt-get install -y libmcrypt-dev wget zip
+
+RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
+
+WORKDIR /var/www/slim
